@@ -1,0 +1,27 @@
+{
+  "name": "cathode",
+  "version": "0.1.0",
+  "description": "Browser-canvas ASCII component framework with retro terminal aesthetics",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "demo": "vite demo",
+    "demo:build": "vite build demo"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.2.2"
+  },
+  "license": "MIT",
+  "keywords": ["tui", "terminal", "canvas", "ascii", "retro", "dashboard", "ui"]
+}
