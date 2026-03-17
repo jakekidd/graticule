@@ -1,5 +1,10 @@
 # Tessera
 
+[![npm version](https://img.shields.io/npm/v/tessera.svg)](https://www.npmjs.com/package/tessera)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/tessera)](https://bundlephobia.com/package/tessera)
+[![license](https://img.shields.io/npm/l/tessera.svg)](https://github.com/jakekidd/tessera/blob/main/LICENSE)
+[![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](https://www.npmjs.com/package/tessera)
+
 Browser-canvas ASCII component framework for building retro terminal dashboards. Zero dependencies. ~19 KB.
 
 Each character cell is a tessera; compose them into mosaics.
@@ -32,6 +37,8 @@ app.start()
 ```bash
 npm install tessera
 ```
+
+> TypeScript source is included in the package alongside compiled output. This library is still young and actively evolving, so having the source available makes debugging and contributing easier while the API stabilizes.
 
 ## Features
 
