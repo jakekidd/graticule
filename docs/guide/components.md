@@ -141,4 +141,4 @@ new BarGraph([
 })
 ```
 
-Both `LineGraph` and `BarGraph` occupy deterministic space on the grid like any component, but their visual content is rendered via canvas vectors. When you call `app.copy()`, the chart area appears as blank space while the ASCII legend is preserved.
+Both `LineGraph` and `BarGraph` occupy deterministic space on the grid like any component, but their visual content is rendered via canvas vectors. When you call `app.dump()`, the chart area appears as blank space while the ASCII legend is preserved.

@@ -48,7 +48,7 @@ npm install tessera
 - **Flex layout** - `Row` and `Col` with fixed and flex sizing, nest them however you want
 - **Vector graphs** - `LineGraph` and `BarGraph` render via canvas overlays, not ASCII
 - **Interactivity** - click regions, keyboard events, hover highlighting, tab navigation
-- **Copy-friendly** - `app.copy()` returns the ASCII grid as text (graph areas are blank)
+- **Copy-friendly** - `app.dump()` returns the ASCII grid as text (graph areas are blank)
 
 ## Components
 

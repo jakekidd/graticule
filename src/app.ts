@@ -122,21 +122,17 @@ export class App {
     }
   }
 
-  /** Get the last rendered grid as a string (useful for debugging / copy) */
+  /** Return the last rendered grid as a newline-joined string. Graph/chart areas appear as blank space. */
   dump(): string {
     if (!this.lastGrid) return '';
     return this.lastGrid.map(row => row.join('')).join('\n');
   }
 
-  /** Copy the ASCII grid as text. Graph/chart areas appear as blank space. */
-  copy(): string {
-    return this.dump();
-  }
-
-  /** Clean up event listeners */
+  /** Clean up event listeners on the window, canvas, and screen. */
   destroy(): void {
     if (this.keyHandler) {
       window.removeEventListener('keydown', this.keyHandler);
     }
+    this.screen.destroy();
   }
 }

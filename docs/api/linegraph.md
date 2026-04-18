@@ -94,6 +94,6 @@ new Row([
 ])
 ```
 
-## Copy/Dump
+## Dump
 
-When you call `app.copy()` or `app.dump()`, the chart area appears as blank space since the visual data is rendered via canvas vectors, not ASCII characters. The legend (on the ASCII grid) is preserved.
+When you call `app.dump()`, the chart area appears as blank space since the visual data is rendered via canvas vectors, not ASCII characters. The legend (on the ASCII grid) is preserved.

@@ -10,7 +10,7 @@ export interface ScreenConfig {
 }
 
 const DEFAULT_CONFIG: Required<ScreenConfig> = {
-  font: 'SF Mono, IBM Plex Mono, monospace',
+  font: 'monospace',
   fontSize: 14,
   fg: FG,
   bg: BG,
@@ -34,6 +34,11 @@ export class Screen {
   private mouseMoveHandler?: (col: number, row: number) => void;
   private resizeHandler?: () => void;
 
+  private onWindowResize: () => void;
+  private onCanvasClick: (e: MouseEvent) => void;
+  private onCanvasMouseMove: (e: MouseEvent) => void;
+  private onCanvasMouseLeave: () => void;
+
   constructor(canvas: HTMLCanvasElement, config: ScreenConfig = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d')!;
@@ -42,17 +47,27 @@ export class Screen {
     this.measure();
     this.resize();
 
-    window.addEventListener('resize', () => {
-      this.resize();
-      this.resizeHandler?.();
-    });
-    canvas.addEventListener('click', (e) => this.handleClick(e));
-    canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
-    canvas.addEventListener('mouseleave', () => {
+    this.onWindowResize = () => { this.resize(); this.resizeHandler?.(); };
+    this.onCanvasClick = (e) => this.handleClick(e);
+    this.onCanvasMouseMove = (e) => this.handleMouseMove(e);
+    this.onCanvasMouseLeave = () => {
       this.mouseCol = -1;
       this.mouseRow = -1;
       this.mouseMoveHandler?.(-1, -1);
-    });
+    };
+
+    window.addEventListener('resize', this.onWindowResize);
+    canvas.addEventListener('click', this.onCanvasClick);
+    canvas.addEventListener('mousemove', this.onCanvasMouseMove);
+    canvas.addEventListener('mouseleave', this.onCanvasMouseLeave);
+  }
+
+  /** Remove all event listeners registered on window and canvas. */
+  public destroy(): void {
+    window.removeEventListener('resize', this.onWindowResize);
+    this.canvas.removeEventListener('click', this.onCanvasClick);
+    this.canvas.removeEventListener('mousemove', this.onCanvasMouseMove);
+    this.canvas.removeEventListener('mouseleave', this.onCanvasMouseLeave);
   }
 
   private measure(): void {
